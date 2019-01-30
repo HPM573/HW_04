@@ -13,7 +13,6 @@ Clearly, this depends on the risk of emboli – the higher the risk, the greater
 the payoff from anticoagulation. Note that a stroke or bleed can occur 
 repeatedly during the lifetime of the patient, so we must model the entire uncertain 
 life span of the patient, and allow for repeated uncertain events. 
-Similarly, we must allow for death to occur at any point in time. 
 
 **Problem 1: Markov Model (Weight 1)**.
 We would like to formulate this problem as a Markov model with the following mutually-exclusive states:
@@ -23,7 +22,7 @@ We assume they have a normal quality of life in spite of the increased risk of s
 and an increase probability of further stroke (and hence require treatment with anticoagulation).
 3. **Dead**: An absorbing state to represent patients who died due to stroke. 
 
-Draw a Markov diagram (using any software you wish) with the three health states described above and 
+Draw a Markov diagram (using any program you wish) with the three health states described above and 
 directed arrows that represent the possibility of transition between states. Name your graph as 'MarkovModel' 
 and make sure to push it with your submission. 
 
@@ -31,7 +30,7 @@ and make sure to push it with your submission.
 **Problem 2: Probability Transition Matrix (Weight 2)**.
 In many situations, the probability transition matrix is not readily available and we need to calculate
 it using estimates available to us. Use the following estimates to calculate the 
-transition probability matrix of the Markov model you draw for Problem 1:
+transition probability matrix of the Markov model you drew for Problem 1:
 
 1. For patients in health state 'Well', the annual probability of stroke is 5%. 
 2. For patients in health state 'Post-Stroke', the annual probability of stroke is 20%. 
@@ -40,7 +39,8 @@ transition probability matrix of the Markov model you draw for Problem 1:
 _Hint_: To calculate transition probabilities out of 'Well', imagine you start today with 100 patients in 'Well', 
 by the end of the year, how many would you expect to be still in 'Well', 
 how many in 'Post-Stroke'm and how many in 'Dead'? 
-Try to answer the same questions when you start today with 100 patients in 'Post-Stroke' and 'Dead'.
+Try to answer the same questions when you start today with 100 patients in 'Post-Stroke' and 'Dead'. 
+And remember the sum of probabilities in each row should be 1.
 
 
 **Problem 3: Simulation (Weight 4)**. 
@@ -62,15 +62,14 @@ Under scenario 1, we should increment the number of strokes by 1 but with only 3
 we cannot tell if scenario 1 has occurs during a time-step. 
 
 One popular approach to resolve this problem is to add a **temporary state** “Stroke” to model 
-the actual event (here stoke) that causes transition from one state to another state.  
+the actual event (here stoke) that causes transition from one state to another state.
 This temporary state is characterized by having transitions from it only to other 
 states and not to itself. Therefore, a patient can stay in this state for one 
 cycle only and must move to another state for the next cycle. 
 The presence of temporary “Stroke” enables the calculation of stroke episodes. 
 Update your Markov model diagram and the probability transition matrix 
-to reflect the addition of the temporary state “Stroke”. 
-
-Note that now: 
+to reflect the addition of the temporary state “Stroke”. Note that now:
+ 
 1.	We don’t have transition from “Well” to “Post-Stroke” and instead a patient who experiences 
 stroke while in state “Well” will move to the temporary state “Stroke”. 
 2.	From state “Stroke” one can only move to “Post-Stroke” state 
@@ -85,12 +84,12 @@ and the number of stokes for patients who start in state “Well” at the begin
 Display the survival curve, and histograms of number of strokes and survival life-years.  
 
 
-**Problem 7: A More Accurate Way of Modeling Strokes (BONUS PROBLEM) **. 
+**Problem 7: A More Accurate Way of Modeling Strokes (BONUS PROBLEM)**. 
 Compare the estimated mean survival time from the first Markov model with the second Markov model that utilizes 
 a temporary state. 
 You will notice that adding the temporary state has artificially increased the patient survival time. 
 This is because those who move to the temporary state (here due to experiencing a stroke) are assumed
-to stay there for exactly 1 cycle (here 1 year). This clearly an unrealistic assumption. 
+to stay there for exactly 1 cycle (here 1 year). This is clearly an unrealistic assumption. 
 A more accurate way to simulate this Markov model is to model the events that derives 
 the transition between states. 
 To this end, the `simulate()` method of the `Patient` class should be implemented diffrently:
