@@ -33,10 +33,9 @@ In many situations, the probability transition matrix is not readily available a
 it using estimates available to us. Use the following estimates to calculate the 
 transition probability matrix of the Markov model you draw for Problem 1:
 
-1. For patients in health state 'Well', the annual probability of stroke is 5%. If they have a stroke, 
-they will survive with 70% probability (and move to 'Post-Stoke'). 
-2. For patients in health state 'Post-Stroke', the annual probability of stroke is 20%. If they have a stroke, 
-they will survive with 60% probability (and move back to 'Post-Stroke')
+1. For patients in health state 'Well', the annual probability of stroke is 5%. 
+2. For patients in health state 'Post-Stroke', the annual probability of stroke is 20%. 
+3. If a patient experiences a stroke, they will survive with 70% probability (and move to 'Post-Stoke'). 
 
 _Hint_: To calculate transition probabilities out of 'Well', imagine you start today with 100 patients in 'Well', 
 by the end of the year, how many would you expect to be still in 'Well', 
@@ -67,15 +66,50 @@ the actual event (here stoke) that causes transition from one state to another s
 This temporary state is characterized by having transitions from it only to other 
 states and not to itself. Therefore, a patient can stay in this state for one 
 cycle only and must move to another state for the next cycle. 
-The presence of temporary “Stroke” enables the calculation of stroke episodes.
+The presence of temporary “Stroke” enables the calculation of stroke episodes. 
+Update your Markov model diagram and the probability transition matrix 
+to reflect the addition of the temporary state “Stroke”. 
+
+Note that now: 
+1.	We don’t have transition from “Well” to “Post-Stroke” and instead a patient who experiences 
+stroke while in state “Well” will move to the temporary state “Stroke”. 
+2.	From state “Stroke” one can only move to “Post-Stroke” state 
+(by the way we have constructed the temporary state “Stroke”). 
+3.	And the movements out of the state “Post-Stroke” is now more accurately modeled. 
+A patient in this state may experience another stroke with 20% probability 
+or may experience an “event-free” cycle and stays in “Post-Stroke” state with 80% probability.
+
+**Problem 6: Simulation (Weight 4)**. 
+Develop a new Markov model to simulate 2,000 patients over 50 years to estimate the expected life-years 
+and the number of stokes for patients who start in state “Well” at the beginning of the simulation period. 
+Display the survival curve, and histograms of number of strokes and survival life-years.  
 
 
+**Problem 7: A More Accurate Way of Modeling Strokes (BONUS PROBLEM) **. 
+Compare the estimated mean survival time from the first Markov model with the second Markov model that utilizes 
+a temporary state. 
+You will notice that adding the temporary state has artificially increased the patient survival time. 
+This is because those who move to the temporary state (here due to experiencing a stroke) are assumed
+to stay there for exactly 1 cycle (here 1 year). This clearly an unrealistic assumption. 
+A more accurate way to simulate this Markov model is to model the events that derives 
+the transition between states. 
+To this end, the `simulate()` method of the `Patient` class should be implemented diffrently:
 
-
-
-
-
-
-
-
+    While the patient is alive and simulation length is not yet reached:
+        If health state is Well or Post-Stroke:
+            Decide if the patient will have stroke:
+            If yes,
+                Incriment the number of strokes 
+                Decide if the patient will survive:
+                If yes, 
+                    new state <- Post-Stroke
+                Else if the patient dies
+                    new state <- Dead
+            Else if no stroke 
+                new state <- Well
+        
+        Else if health state is Dead:        
+            new state <- Dead
  
+Evaluate this new simulation model to estimate the mean survival time of patients
+and produce the survival curve, and histograms of number of strokes and survival life-years.  
