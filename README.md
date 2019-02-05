@@ -23,7 +23,7 @@ and an increase probability of further stroke (and hence require treatment with 
 3. **Dead**: An absorbing state to represent patients who died due to stroke. 
 
 Draw a Markov diagram (using any program you wish) with the three health states described above and 
-directed arrows that represent the possibility of transition between states. Name your graph as 'MarkovModel' 
+directed arrows that represent the possibility of transition between states. Name your diagram as 'MarkovModel' 
 and make sure to push it with your submission. 
 
 
