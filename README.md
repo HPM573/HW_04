@@ -105,7 +105,7 @@ To this end, the `simulate()` method of the `Patient` class should be implemente
                 Else if the patient dies
                     new state <- Dead
             Else if no stroke 
-                new state <- Well
+                new state <- current state
         
         Else if health state is Dead:        
             new state <- Dead
