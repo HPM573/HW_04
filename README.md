@@ -101,14 +101,14 @@ To this end, the `simulate()` method of the `Patient` class should be implemente
                 Incriment the number of strokes 
                 Decide if the patient will survive:
                 If yes, 
-                    new state <- Post-Stroke
+                    new state <-- Post-Stroke
                 Else if the patient dies
-                    new state <- Dead
+                    new state <-- Dead
             Else if no stroke 
-                new state <- current state
+                new state <-- current state
         
         Else if health state is Dead:        
-            new state <- Dead
+            new state <-- Dead
  
 Evaluate this new simulation model to estimate the mean survival time of patients
 and produce the survival curve, and histograms of number of strokes and survival life-years.  
