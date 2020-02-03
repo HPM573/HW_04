@@ -72,8 +72,7 @@ to reflect the addition of the temporary state “Stroke”. Note that now:
  
 1.	We don’t have transition from “Well” to “Post-Stroke” and instead a patient who experiences 
 stroke while in state “Well” will move to the temporary state “Stroke”. 
-2.	From state “Stroke” one can only move to “Post-Stroke” state 
-(by the way we have constructed the temporary state “Stroke”). 
+2.	From state “Stroke” one can move to “Post-Stroke” state with 70% probability or move to "Death" with 30% probability. 
 3.	And the movements out of the state “Post-Stroke” is now more accurately modeled. 
 A patient in this state may experience another stroke with 20% probability 
 or may experience an “event-free” cycle and stays in “Post-Stroke” state with 80% probability.
