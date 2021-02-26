@@ -83,7 +83,7 @@ and the number of stokes for patients who start in state “Well” at the begin
 Display the survival curve, and histograms of number of strokes and survival life-years.  
 
 
-**Problem 7: A More Accurate Way of Modeling Strokes (BONUS PROBLEM)**. 
+**Problem 7: A More Accurate Way of Modeling Strokes (BONUS PROBLEM, Weight 4)**. 
 Compare the estimated mean survival time from the first Markov model with the second Markov model that utilizes 
 a temporary state. 
 You will notice that adding the temporary state has artificially increased the patient survival time. 
