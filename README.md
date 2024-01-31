@@ -40,7 +40,7 @@ transition probability matrix of the Markov model you drew for Problem 1:
 
 _Hint_: To calculate transition probabilities out of 'Well', imagine you start today with 100 patients in 'Well', 
 by the end of the year, how many would you expect to be still in 'Well', 
-how many in 'Post-Stroke'm and how many in 'Dead'? 
+how many in 'Post-Stroke', how many in 'Stroke Death', and how many in 'All-Cause Death'? 
 Try to answer the same questions when you start today with 100 patients in 'Post-Stroke' and 'Dead'. 
 And remember the sum of probabilities in each row should be 1.
 
@@ -74,10 +74,10 @@ to reflect the addition of the temporary state “Stroke”. Note that now:
  
 1.	We don’t have transition from “Well” to “Post-Stroke” and instead a patient who experiences 
 stroke while in state “Well” will move to the temporary state “Stroke”. 
-2.	From state “Stroke” one can move to “Post-Stroke” state with 70% probability or move to "Death" with 30% probability. 
+2.	From state “Stroke” one can move to “Post-Stroke” state with $q$ probability or move to "Stroke Death" with $1-q$ probability. 
 3.	And the movements out of the state “Post-Stroke” is now more accurately modeled. 
-A patient in this state may experience another stroke with 20% probability 
-or may experience an “event-free” cycle and stays in “Post-Stroke” state with 80% probability.
+A patient in this state may experience another stroke 
+or may experience an “event-free” cycle and stays in “Post-Stroke” state.
 
 **Problem 6: Simulation (Weight 4)**. 
 Develop a new Markov model to simulate 2,000 patients over 50 years to estimate the expected life-years 
@@ -97,19 +97,20 @@ To this end, the `simulate()` method of the `Patient` class should be implemente
 
     While the patient is alive and simulation length is not yet reached:
         If health state is Well or Post-Stroke:
-            Decide if the patient will have stroke:
-            If yes,
-                Incriment the number of strokes 
-                Decide if the patient will survive:
-                If yes, 
-                    Set current state <-- Post-Stroke
-                Else if the patient dies
-                    Set current state <-- Dead
-            Else if no stroke 
-                Set current state <-- current state
-        
-        Else if health state is Dead:        
-            Set current state <-- Dead
+            Decide if the patient will die due to all causes
+            If yes, 
+                Set current state <-- All-Cause Death
+            Else 
+                Decide if the patient will have stroke:
+                If yes,
+                    Increment the number of strokes 
+                    Decide if the patient will survive:
+                    If yes, 
+                        Set current state <-- Post-Stroke
+                    Else if the patient dies
+                        Set current state <-- Dead
+                Else if no stroke 
+                    Set current state <-- current state
  
 Evaluate this new simulation model to estimate the mean survival time of patients
 and produce the survival curve, and histograms of number of strokes and survival life-years.  
