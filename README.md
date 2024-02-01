@@ -28,7 +28,7 @@ directed arrows that represent the possibility of transition between states. Nam
 and make sure to push it with your submission. 
 
 
-**Problem 2: Probability Transition Matrix (Weight 2)**.
+**Problem 2: Probability Transition Matrix (Weight 3)**.
 In many situations, the probability transition matrix is not readily available and we need to calculate
 it using estimates available to us. Use the following estimates to calculate the 
 transition probability matrix of the Markov model you drew for Problem 1:
@@ -39,9 +39,13 @@ transition probability matrix of the Markov model you drew for Problem 1:
 3. If a patient experiences a stroke, they will survive with 70% probability (and move to 'Post-Stoke') ($q$). 
 
 _Hint_: To calculate transition probabilities out of 'Well', imagine you start today with 100 patients in 'Well', 
-by the end of the year, how many would you expect to be still in 'Well', 
-how many in 'Post-Stroke', how many in 'Stroke Death', and how many in 'All-Cause Death'? 
-Try to answer the same questions when you start today with 100 patients in 'Post-Stroke' and 'Dead'. 
+by the end of the year:
+- How many would you expect to die during this year due to other cause (and move to All-Cause Death)? 
+- Among those who survive, how many would you expect to not have a stroke and stay in 'Well'?
+- Among those who experience a stroke, how many would you expect to survive the stroke and move to 'Post-Stroke' and how many would you expect to not survive the stroke and move to 'Stroke Death'?
+ 
+Try to answer the same questions when you start today with 100 patients in 
+'Post-Stroke', 'Stroke Death', and 'All-Cause Death'. 
 And remember the sum of probabilities in each row should be 1.
 
 
