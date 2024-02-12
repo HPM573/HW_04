@@ -23,7 +23,7 @@ and an increase probability of further stroke (and hence require treatment with 
 3. **Stroke Death**: An absorbing state to represent patients who died due to stroke.
 4. **All-Cause Death**: An absorbing state to represent patients who died due to other causes.
 
-Draw a Markov diagram (using any program you wish) with the three health states described above and 
+Draw a Markov diagram (using any program you wish) with the four health states described above and 
 directed arrows that represent the possibility of transition between states. Name your diagram as 'Markov Model 1' 
 and make sure to push it with your submission. 
 
