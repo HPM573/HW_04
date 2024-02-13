@@ -58,7 +58,7 @@ Produce the survival curve of patients who start in state “Well” and the his
 
 **Problem 5: Temporary State (Weight 1)**. 
 Can you think of a way to count the number of strokes that a patient experiences throughout their lifetime
-in this Markov model? With only 3 states, the number of strokes cannot be properly counted. 
+in this Markov model? With only 4 states, the number of strokes cannot be properly counted. 
 Note that in this model, a patient who is in “Post-Stroke” state could continue to stay in 
 this state under two scenarios: 
 1. If a patient experience a stroke but survives, or
