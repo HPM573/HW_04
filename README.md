@@ -33,7 +33,7 @@ In many situations, the probability transition matrix is not readily available a
 it using estimates available to us. Use the following estimates to calculate the 
 transition probability matrix of the Markov model you drew for Problem 1:
 
-1. The annual probability of death due to all causes is 10% ($\theta$).
+1. The annual probability of death due to all causes is 15% ($\theta$).
 2. For patients in health state 'Well', the annual probability of stroke is 5% ($p$). 
 2. For patients in health state 'Post-Stroke', the annual probability of stroke is 20% ($r$). 
 3. If a patient experiences a stroke, they will survive with 70% probability (and move to 'Post-Stoke') ($q$). 
